@@ -9,14 +9,8 @@ import { SuperContext } from './src/contextProvider';
 import CameraTwo from './src/CameraTwo';
 import CameraOne from './src/CameraOne';
 import MapScreen from './src/MapScreen';
-import { MbxScreen } from './src/MbxScreen';
 import SwipeScreen from './src/SwipeScreen';
-import RSTPScreen from './src/RSTPScreen';
-import VideoScreen from './src/VideoScreen';
-import VideoPlayer from './src/VideoPlayer';
 import MediaPlayer from './src/MediaPlayer';
-
-
 
 
 const Stack = createStackNavigator();
@@ -27,39 +21,10 @@ const App = () => {
   return (
     <SuperContext.Provider value={{senderId,receiverId}}>
         <NavigationContainer>
-          <Stack.Navigator>
-           {/* <Stack.Screen
-              name="GoogleMap"
-              component={MapScreen}
-              options={{headerShown: false}}
-            /> */}
-           {/* <Stack.Screen
-              name="Graphql"
-              component={GraphqlScreen}
-              options={{headerShown: false}}
-            />  */}
-           {/*<Stack.Screen name="CameraOne" 
-              component={CameraOne} 
-            /> */}
-            {/*<Stack.Screen name="CameraTwo" 
-              component={CameraTwo} 
-          /> */}
-            {/* <Stack.Screen name="mbx" 
-              component={MbxScreen} 
-            /> */}
-           {/*  <Stack.Screen name="swipe" 
-              component={SwipeScreen} 
-            /> */}
-           {/*  <Stack.Screen name="RTSP Streaming Screen" 
-              component={VideoPlayer} 
-            /> */}  
+          <Stack.Navigator>  
           <Stack.Screen name="RTSP Node Media Player" 
               component={MediaPlayer} 
             />
-          {/*  <Stack.Screen name="Arrow Video" 
-              component={VideoScreen} 
-              options={{headerShown: false}}
-            />  */}
           </Stack.Navigator>
         </NavigationContainer>
     </SuperContext.Provider>

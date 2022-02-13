@@ -39,8 +39,6 @@
     "react-native-screens": "^3.10.2",
     "react-native-slider": "^0.11.0",
     "react-native-vector-icons": "^9.0.0",
-    "react-native-video": "^2.3.1",
-    "react-native-video-player": "^0.12.0",
     "react-native-webrtc": "^1.94.1",
     "react-native-websocket": "^1.0.2",
     "socket.io-client": "^4.4.1",
