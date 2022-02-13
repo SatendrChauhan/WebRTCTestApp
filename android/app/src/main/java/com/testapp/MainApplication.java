@@ -14,6 +14,8 @@ import java.util.List;
 import com.facebook.react.bridge.JSIModulePackage; // <- add this
 import com.swmansion.reanimated.ReanimatedJSIModulePackage; // <- add this
 import com.airbnb.android.react.maps.MapsPackage;
+import com.brentvatne.react.ReactVideoPackage;  //added
+
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -30,8 +32,9 @@ public class MainApplication extends Application implements ReactApplication {
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // packages.add(new MyReactNativePackage());
+          // new MainReactPackage(),
           new com.oney.WebRTCModule.WebRTCModulePackage();  // Add this line
-          // new MainReactPackage();
+          new ReactVideoPackage();
           new MapsPackage();
           return packages;
         }

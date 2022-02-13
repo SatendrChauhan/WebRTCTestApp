@@ -7,7 +7,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {TextInput} from 'react-native-paper';
 import {useFocusEffect} from '@react-navigation/native';
 import Modal from 'react-native-modal';
-import { SuperContext } from './contextProvider';
 
 import {
   RTCPeerConnection,
@@ -21,30 +20,28 @@ import {
 } from 'react-native-webrtc';
 
 import { useNavigation } from '@react-navigation/native';
-import { TouchableHighlight } from 'react-native-gesture-handler';
+import { ScrollView, TouchableHighlight } from 'react-native-gesture-handler';
+import { SuperContext } from './contextProvider';
 
 const STUN_SERVER = 'stun:stun.l.google.com:19302';
 const MOZ_STUN_SERVER = 'stun:stun.services.mozilla.com';
 const SOCKET_URL = 'wss://webrtc.nirbheek.in:8443';
 
 export default function CameraTwo({route}) {
+   
     const navigation = useNavigation();
     const [loading, setLoading] = useState(false);
     const {senderId,receiverId} = useContext(SuperContext);
     const [userId, setUserId] = useState(senderId.peerId);
-    const [calling, setCalling] = useState(false);
     const [localStream, setLocalStream] = useState({toURL: () => null});
     const [remoteStream, setRemoteStream] = useState({toURL: () => null});
-    //['4034','7549','3565','1551','8575']
-    const [callToUsername, setCallToUsername] = useState(receiverId.peerIdOne);
+    const [callToUsername, setCallToUsername] = useState('hm9999');
     const [play, setPlay] = useState(false);
     const [paused, setPaused] = useState(false);
     const connectedUser = useRef(null);
     const offerRef = useRef(null);
     const conn = useRef(new WebSocket(SOCKET_URL));
 
-
-    // console.log(route);
     const yourConn = useRef(
         new RTCPeerConnection({
             iceServers: [
@@ -53,8 +50,8 @@ export default function CameraTwo({route}) {
               },
             ],
         }),
-
     );
+
 
     useEffect(() => {
       /**
@@ -369,6 +366,7 @@ export default function CameraTwo({route}) {
 
   return (
     <View style={styles.root}>
+      <ScrollView>
       <View style={styles.videoContainer}>
         <View style={[styles.videos, styles.remoteVideos]}>
           <RTCView
@@ -387,15 +385,16 @@ export default function CameraTwo({route}) {
             }
           </TouchableHighlight>
         </View>
-        <View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+        {/* <View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+        <Button mode="text" onPress={() => navigation.navigate('CameraTwo')} style={{paddingRight: 10}}>{' '}</Button>
+          {route.name === "CameraTwo" ?
           <Button mode="text" onPress={() => navigation.navigate('CameraOne')} style={{paddingRight: 10}}>Previous</Button>
-          {route.name === "CameraOne" ?
-          <Button mode="text" onPress={() => navigation.navigate('CameraTwo')} style={{paddingRight: 10}}>Next</Button>
           :
-          <Button mode="text" onPress={() => navigation.navigate('CameraTwo')} style={{paddingRight: 10}}>{' '}</Button>
+          <Button mode="text" onPress={() => navigation.navigate('CameraTwo')} style={{paddingRight: 10}}>Next</Button>
           }
-        </View>
+        </View> */}
       </View>
+      </ScrollView>
     </View>
   );
 }
@@ -403,16 +402,12 @@ export default function CameraTwo({route}) {
 const styles = StyleSheet.create({
     root: {
       backgroundColor: '#121212',
-      flex: 1,
       width: '100%',
-      marginTop:1,
-      paddingHorizontal: 3,
-      paddingBottom: 5,
+      marginTop:20,
+      paddingHorizontal: 2,
     },
     videoContainer: {
       flex: 1,
-      marginTop:5,
-      marginBottom:20,
     },
     videos: {
       width: '100%',
@@ -422,15 +417,9 @@ const styles = StyleSheet.create({
       borderColor: '#fff',
       borderRadius: 2,
     },
-    remoteVideos: {
-      // flex:1
-      height: 300,
-      width: '100%',
-    },
     remoteVideo: {
-      flex:1,
       backgroundColor: '#121212',
-      height: 300,
+      height: 200,
       width: '100%',
     },
     btnContainer: {

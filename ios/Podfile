@@ -12,6 +12,8 @@ target 'TestApp' do
     :hermes_enabled => false
   )
 
+  pod 'react-native-vlc-media-player', :path => '../node_modules/react-native-vlc-media-player'
+
   target 'TestAppTests' do
     inherit! :complete
     # Pods for testing

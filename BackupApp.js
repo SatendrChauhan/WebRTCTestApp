@@ -12,9 +12,6 @@ import MapScreen from './src/MapScreen';
 import { MbxScreen } from './src/MbxScreen';
 import SwipeScreen from './src/SwipeScreen';
 import RSTPScreen from './src/RSTPScreen';
-import VideoScreen from './src/VideoScreen';
-import VideoPlayer from './src/VideoPlayer';
-import MediaPlayer from './src/MediaPlayer';
 
 
 
@@ -38,28 +35,21 @@ const App = () => {
               component={GraphqlScreen}
               options={{headerShown: false}}
             />  */}
-           {/*<Stack.Screen name="CameraOne" 
+            {/* <Stack.Screen name="CameraOne" 
               component={CameraOne} 
-            /> */}
-            {/*<Stack.Screen name="CameraTwo" 
+            />
+            <Stack.Screen name="CameraTwo" 
               component={CameraTwo} 
-          /> */}
+            /> */}
             {/* <Stack.Screen name="mbx" 
               component={MbxScreen} 
             /> */}
-           {/*  <Stack.Screen name="swipe" 
+            <Stack.Screen name="swipe" 
               component={SwipeScreen} 
-            /> */}
-           {/*  <Stack.Screen name="RTSP Streaming Screen" 
-              component={VideoPlayer} 
-            /> */}  
-          <Stack.Screen name="RTSP Node Media Player" 
-              component={MediaPlayer} 
             />
-          {/*  <Stack.Screen name="Arrow Video" 
-              component={VideoScreen} 
-              options={{headerShown: false}}
-            />  */}
+         {/*    <Stack.Screen name="RTSP Streaming Screen" 
+              component={RSTPScreen} 
+            /> */}
           </Stack.Navigator>
         </NavigationContainer>
     </SuperContext.Provider>

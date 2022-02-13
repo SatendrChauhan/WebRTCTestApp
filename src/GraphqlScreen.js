@@ -1,19 +1,18 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import {gql,useQuery, useSubscription } from '@apollo/client';
-import { GET_ALL_DATA } from './queries';
+
 
 
 const GraphqlScreen = () => {
-  const {loading, error, data} = useSubscription(GET_ALL_DATA);
+  // const {loading, error, data} = useSubscription(GET_ALL_DATA);
 
-  if(loading) return <View style={styles.container}><Text>Loading.....</Text></View>
+  // if(loading) return <View style={styles.container}><Text>Loading.....</Text></View>
 
-  console.log(data);
+  // console.log(data);
   
-  // const getData = data.map((item, i) => {
-  //    return item;
-  // })
+  // // const getData = data.map((item, i) => {
+  // //    return item;
+  // // })
   
 
   return (

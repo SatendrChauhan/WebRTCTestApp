@@ -3,6 +3,7 @@ apply plugin: 'com.google.gms.google-services'
 
 import com.android.build.OutputFile
 
+
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
  * and bundleReleaseJsAndAssets).
@@ -211,6 +212,8 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
 
     compile project(':WebRTCModule') //added by me
+
+    implementation "androidx.appcompat:appcompat:1.0.0" // added by me
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.fbjni'

@@ -21,7 +21,6 @@ import {
 
 import { useNavigation } from '@react-navigation/native';
 import { ScrollView, TouchableHighlight } from 'react-native-gesture-handler';
-import CameraTwo from './CameraTwo';
 import { SuperContext } from './contextProvider';
 
 const STUN_SERVER = 'stun:stun.l.google.com:19302';
@@ -34,40 +33,15 @@ export default function CameraOne({route}) {
     const [loading, setLoading] = useState(false);
     const {senderId,receiverId} = useContext(SuperContext);
     const [userId, setUserId] = useState(senderId.peerId);
-    const [calling, setCalling] = useState(false);
     const [localStream, setLocalStream] = useState({toURL: () => null});
     const [remoteStream, setRemoteStream] = useState({toURL: () => null});
-    //['4034','7549','3565','1551','8575']
-    const [callToUsername, setCallToUsername] = useState(receiverId.peerIdTwo);
+    const [callToUsername, setCallToUsername] = useState('257');
     const [play, setPlay] = useState(false);
     const [paused, setPaused] = useState(false);
     const connectedUser = useRef(null);
     const offerRef = useRef(null);
     const conn = useRef(new WebSocket(SOCKET_URL));
 
-    
-    // console.log(route.name);
-   /*  useFocusEffect(
-      useCallback(() => {
-        console.log("sender ID"+ senderId.peerId);
-        console.log("receiverId "+ receiverId.peerIdOne);
-          if (senderId.peerId !== "" || senderId.peerId) {
-            setUserId(senderId.peerId);
-            setCallToUsername(receiverId.peerIdOne)
-          } else {
-            setUserId('');
-          }
-      }, [userId]),
-    ); */
-
-    /* useEffect(() => {
-      if (senderId.peerId !== "" || senderId.peerId) {
-        setUserId(senderId.peerId);
-        setCallToUsername(receiverId.peerIdOne)
-      } else {
-        setUserId('');
-      }
-    }, []) */
 
     const yourConn = useRef(
         new RTCPeerConnection({
@@ -413,14 +387,14 @@ export default function CameraOne({route}) {
             }
           </TouchableHighlight>
         </View>
-        <View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+        {/* <View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
         <Button mode="text" onPress={() => navigation.navigate('CameraTwo')} style={{paddingRight: 10}}>{' '}</Button>
           {route.name === "CameraTwo" ?
           <Button mode="text" onPress={() => navigation.navigate('CameraOne')} style={{paddingRight: 10}}>Previous</Button>
           :
           <Button mode="text" onPress={() => navigation.navigate('CameraTwo')} style={{paddingRight: 10}}>Next</Button>
           }
-        </View>
+        </View> */}
       </View>
       </ScrollView>
     </View>
@@ -430,16 +404,12 @@ export default function CameraOne({route}) {
 const styles = StyleSheet.create({
     root: {
       backgroundColor: '#121212',
-      flex: 1,
       width: '100%',
       marginTop:20,
-      paddingHorizontal: 3,
-      paddingBottom: 5,
+      paddingHorizontal: 2,
     },
     videoContainer: {
       flex: 1,
-      marginTop:10,
-      marginBottom:5,
     },
     videos: {
       width: '100%',
@@ -449,15 +419,9 @@ const styles = StyleSheet.create({
       borderColor: '#fff',
       borderRadius: 2,
     },
-    remoteVideos: {
-      // flex:1
-      height: 300,
-      width: '100%',
-    },
     remoteVideo: {
-      // flex:1,
       backgroundColor: '#121212',
-      height: 300,
+      height: 200,
       width: '100%',
     },
     btnContainer: {
